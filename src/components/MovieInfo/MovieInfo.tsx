@@ -1,21 +1,15 @@
 import React, {FC} from 'react';
-import styles from './MovieInfo.module.css'
-import {IMoviesModel} from "../../models/IMoviesModel";
-import {Link, useNavigate} from "react-router-dom";
+import {IMovieInfoModel} from "../../models/IMovieInfoModel";
 
 interface IProps {
-    movie: IMoviesModel
+    movie: IMovieInfoModel
 }
 
-const MovieInfo: FC<IProps> = ({movie}) => {
+const MovieInfo:FC<IProps> = ({movie}) => {
 
     return (
         <div>
-            <p>
-                {movie.title}
-                <Link to={movie.id.toString()}></Link>
-            </p>
-
+            <p>{movie.overview}</p>
         </div>
     );
 };

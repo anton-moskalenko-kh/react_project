@@ -2,17 +2,20 @@ import {IMoviesModel} from "../../models/IMoviesModel";
 import {createAsyncThunk, createSlice, isFulfilled, isRejected} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 import {moviesService} from "../../services/movies.api.service";
+import {IMovieInfoModel} from "../../models/IMovieInfoModel";
 
 interface IState {
-    movies: IMoviesModel[] | undefined,
+    movies: IMoviesModel[],
     error: boolean,
-    total_pages: number | undefined
+    total_pages: number,
+    movie: IMovieInfoModel | null
 }
 
 const initialState: IState = {
     movies: [],
     error: false,
-    total_pages: 0
+    total_pages: 0,
+    movie: null
 }
 
 const loadMovies = createAsyncThunk(
@@ -30,9 +33,9 @@ const loadMovies = createAsyncThunk(
 
 const searchMovies = createAsyncThunk(
     'moviesSlice/searchMovies',
-    async (query: string, thunkAPI) => {
+    async ({page, query} : {page: string, query: string}, thunkAPI) => {
         try {
-            const movies = await moviesService.searchMovies(query)
+            const movies = await moviesService.searchMovies(page, query)
             return thunkAPI.fulfillWithValue(movies)
         } catch (e) {
             const error = e as AxiosError
@@ -52,6 +55,16 @@ const searchMoviesByGenre = createAsyncThunk('moviesSlice',
         }
     })
 
+const getMovieInfo = createAsyncThunk('moviesSlice/getMovieInfo',
+    async (id: string, thunkAPI) => {
+        try {
+            const movie = await moviesService.getMovieById(id)
+            return thunkAPI.fulfillWithValue(movie)
+        } catch (e) {
+            const error = e as AxiosError
+            thunkAPI.rejectWithValue(error.response?.data)
+        }
+    })
 
 export const moviesSlice = createSlice({
     name: 'moviesSlice',
@@ -59,24 +72,36 @@ export const moviesSlice = createSlice({
     reducers: {},
     extraReducers: builder => builder
         .addCase(loadMovies.fulfilled, ((state, action) => {
-            state.movies = action.payload?.results
-            state.error = false
-            state.total_pages = action.payload?.total_pages
+            if (action.payload) {
+                state.movies = action.payload.results
+                state.error = false
+                state.total_pages = action.payload.total_pages
+            }
         }))
         .addCase(searchMovies.fulfilled, (state, action) => {
-            state.movies = action.payload?.results
-            state.error = false
-            state.total_pages = action.payload?.total_pages
+            if (action.payload) {
+                state.movies = action.payload.results
+                state.error = false
+                state.total_pages = action.payload.total_pages
+            }
         })
         .addCase(searchMoviesByGenre.fulfilled, (state, action) => {
-            state.movies = action.payload?.results
-            state.error = false
-            state.total_pages = action.payload?.total_pages
+            if (action.payload) {
+                state.movies = action.payload.results
+                state.error = false
+                state.total_pages = action.payload.total_pages
+            }
         })
-        .addMatcher(isRejected(loadMovies, searchMovies, searchMoviesByGenre), state => {
+        .addCase(getMovieInfo.fulfilled, (state, action) => {
+            if (action.payload) {
+                state.movie = action.payload
+                state.error = false
+            }
+        })
+        .addMatcher(isRejected(loadMovies, searchMovies, searchMoviesByGenre, getMovieInfo ), state => {
             state.error = true
         })
-        .addMatcher(isFulfilled(loadMovies, searchMovies, searchMoviesByGenre), state => {
+        .addMatcher(isFulfilled(loadMovies, searchMovies, searchMoviesByGenre, getMovieInfo), state => {
             state.error = false
         })
 })
@@ -85,5 +110,6 @@ export const moviesActions = {
     ...moviesSlice.actions,
     loadMovies,
     searchMovies,
-    searchMoviesByGenre
+    searchMoviesByGenre,
+    getMovieInfo
 }

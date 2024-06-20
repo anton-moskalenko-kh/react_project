@@ -24,7 +24,7 @@ const Header = () => {
     const search = () => {
         const value = getValues('movies')
         if (value !== '') {
-            setQuery({query: value.toString()})
+            setQuery({page: '1', query: value.toString()})
         }
         reset()
     };

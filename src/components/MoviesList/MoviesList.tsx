@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './MoviesList.module.css'
 import {useAppSelector} from "../../redux/store";
 import MovieInfo from "../MovieInfo/MovieInfo";
+import MoviesListCard from "../MoviesListCard/MoviesListCard";
 
 
 const MoviesList = () => {
@@ -10,7 +11,7 @@ const MoviesList = () => {
 
     return (
         <div>
-            {movies && movies.map(movie => <MovieInfo key={movie.id} movie={movie}/>)}
+            {movies && movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
             {error && <div>Something was happened</div>}
         </div>
     );
