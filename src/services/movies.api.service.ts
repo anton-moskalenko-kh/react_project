@@ -14,8 +14,19 @@ axiosInstance.interceptors.request.use(request => {
 })
 
 const moviesService = {
-    getAllMovies: async (): Promise<IMoviesPaginatedModel> => {
-        const response = await axiosInstance.get<IMoviesPaginatedModel>(urls.movies.base)
+    getAllMovies: async (page: string): Promise<IMoviesPaginatedModel> => {
+        const response = await axiosInstance.get<IMoviesPaginatedModel>(urls.movies.base,
+            {params: {page: page}})
+        return response.data
+    },
+    searchMovies: async (query: string): Promise<IMoviesPaginatedModel>  => {
+        const response = await axiosInstance.get<IMoviesPaginatedModel>(urls.searchMovie.base,
+            {params: {query: query}})
+        return response.data
+    },
+    getMoviesByGenre: async (page: string, with_genres: string,): Promise<IMoviesPaginatedModel> => {
+        const response = await axiosInstance.get(urls.movies.base,
+            {params: {page: page, with_genres: with_genres}})
         return response.data
     }
 }
