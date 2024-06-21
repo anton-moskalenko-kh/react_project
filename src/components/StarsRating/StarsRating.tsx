@@ -1,12 +1,18 @@
-import React from 'react';
-import styles from './StarsRating.module.css'
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import {FC} from "react";
 
-const StarsRating = () => {
+interface IProps {
+    value: number
+}
+
+export const BasicRating: FC<IProps> = ({value}) => {
+
+
     return (
-        <div>
-
-        </div>
+        <Box>
+            <Rating name="customized-10" precision={0.1} max={10} value={value} readOnly />
+        </Box>
     );
-};
-
-export default StarsRating;
+}

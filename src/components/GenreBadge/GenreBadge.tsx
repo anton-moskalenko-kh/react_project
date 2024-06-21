@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import styles from './GenreBadge.module.css'
 import {IGenreModel} from "../../models/IGenreModel";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 interface IProps {
     genre: IGenreModel
@@ -10,10 +10,12 @@ interface IProps {
 const GenreBadge: FC<IProps> = ({genre}) => {
 
     const [searchParams, setSearchParams] = useSearchParams()
+    const navigate = useNavigate()
 
     return (
-        <div className={styles.badgeBtn}>
+        <div className={styles.badgeBtnBlock}>
             <button onClick={() => {
+                navigate('/movies')
                 setSearchParams({page: '1', with_genres: genre.id.toString()})
             }}>{genre.name}</button>
         </div>

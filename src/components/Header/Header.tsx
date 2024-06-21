@@ -7,6 +7,7 @@ import {moviesActions} from "../../redux/slices/moviesSlice";
 import {genresService} from "../../services/genre.api.service";
 import {genresActions} from "../../redux/slices/genresSlice";
 import GenresList from "../GenresList/GenresList";
+import {ImageAvatars} from "../UserInfo/UserInfo";
 
 
 type FormInput = {
@@ -29,8 +30,7 @@ const Header = () => {
         reset()
     };
 
-    const returnToMain = (event: React.MouseEvent) => {
-        event.preventDefault()
+    const returnToMain = () => {
         setQuery({page: '1'})
     }
 
@@ -45,7 +45,7 @@ const Header = () => {
                 <ul className={styles.listBlock}>
                     <li><Link to={'movies'}
                               onClick={(event) => {
-                                    returnToMain(event)
+                                    returnToMain()
                               }}>
                         All movies</Link></li>
                     <li><Link to={''}
@@ -59,6 +59,7 @@ const Header = () => {
                     <input type="text" placeholder={'Enter name of the film'} {...register('movies')}/>
                     <button className={styles.headerButton}>Search</button>
                 </form>
+                <ImageAvatars />
             </header>
             {isGenre && <GenresList/>}
         </div>

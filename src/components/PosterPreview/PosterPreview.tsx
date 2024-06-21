@@ -8,7 +8,7 @@ interface IProps {
 
 const PosterPreview: FC<IProps> = ({imgUrl}) => {
     return (
-        <div>
+        <div className={styles.posterBlock}>
             <img src={posters + imgUrl} alt="poster"/>
         </div>
     );

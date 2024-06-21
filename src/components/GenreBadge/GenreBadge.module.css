@@ -1,3 +1,14 @@
-.badgeBtn {
-    margin-right: 5px;
+.badgeBtnBlock {
+    margin: 0 7px 5px 0;
+}
+
+.badgeBtnBlock button {
+    font-size: 18px;
+    color: white;
+    background-color: #3176d2;
+    padding: 10px 5px;
+    border-radius: 5px;
+    border: 1px solid;
+    box-sizing: border-box;
+    cursor: pointer;
 }

@@ -1,0 +1,10 @@
+.avatarBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avatarBlock p {
+    margin: 5px 0 0 0 ;
+}
