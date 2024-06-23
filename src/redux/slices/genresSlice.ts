@@ -1,5 +1,4 @@
-import {IGenresListModel} from "../../models/IGenresListModel";
-import {createAsyncThunk, createSlice, isFulfilled, isRejected} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isRejected, PayloadAction} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 import {genresService} from "../../services/genre.api.service";
 import {IGenreModel} from "../../models/IGenreModel";

@@ -1,14 +1,20 @@
 .badgeBtnBlock {
-    margin: 0 7px 5px 0;
+    margin: 0 12px 14px 0;
 }
 
-.badgeBtnBlock button {
+
+.badgeBtnBlock .badgeBtn {
     font-size: 18px;
     color: white;
     background-color: #3176d2;
     padding: 10px 5px;
     border-radius: 5px;
-    border: 1px solid;
+    border: 1px solid #3176d2;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+.badgeBtnBlock .badgeBtn:hover {
+    background-color: orange;
+    border: 1px solid orange;
 }

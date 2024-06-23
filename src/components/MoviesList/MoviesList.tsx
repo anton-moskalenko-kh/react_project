@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './MoviesList.module.css'
 import {useAppSelector} from "../../redux/store";
 import MoviesListCard from "../MoviesListCard/MoviesListCard";
-import {CircularIndeterminate} from "../Loader/Loader";
+import Error from "../Error/Error";
+import {LinearIndeterminate} from "../Loader/Loader";
 
 
 const MoviesList = () => {
@@ -13,8 +14,8 @@ const MoviesList = () => {
         <div className={styles.moviesBlock}>
             {isLoaded
                 ? movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
-                : <CircularIndeterminate/>}
-            {error && <div>Something was happened</div>}
+                : <LinearIndeterminate/>}
+            {error && <Error/>}
         </div>
     );
 };

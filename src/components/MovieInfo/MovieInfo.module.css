@@ -1,0 +1,53 @@
+.movieInfoBlock {
+    display: flex;
+}
+
+.movieInfoBlock img {
+    width: 90%;
+    height: 75vh;
+    cursor: default;
+}
+
+.posterSection {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.posterSection p {
+    font-size: 20px;
+}
+
+.posterSection p span {
+    color: #3176d2;
+    font-weight: bold;
+}
+
+.infoSection {
+    width: 60%;
+}
+
+.infoSection span {
+    font-size: 20px;
+    color: #3f88d8;
+    font-weight: bold;
+}
+
+.infoSection p {
+    font-size: 20px;
+}
+
+.title {
+    font-size: 50px;
+    margin: 20px 0 0 0;
+    color: orange;
+    font-weight: bold;
+}
+
+p.overview {
+    font-size: 30px;
+}
+
+.genresListBlock {
+    display: flex;
+}

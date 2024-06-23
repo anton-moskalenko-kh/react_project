@@ -3,6 +3,8 @@
     justify-content: space-between;
     align-items: center;
     height: 10vh;
+    width: 90vw;
+    margin: 0 auto;
 }
 
 .listBlock {
@@ -19,6 +21,10 @@
     font-weight: bold;
 }
 
+.listBlock li a:hover {
+    color: orange;
+}
+
 input {
     padding: 20px 10px;
     width: 20vw;
@@ -30,6 +36,11 @@ input {
     color: #3f88d8;
 }
 
+
+form {
+    display: flex;
+}
+
 .headerButton {
     font-size: 20px;
     width: 85px;
@@ -37,7 +48,12 @@ input {
     color: white;
     background-color: #3176d2;
     border-radius: 7px;
-    border: 1px solid;
+    border: 1px solid #3176d2;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+.headerButton:hover {
+    background-color: orange;
+    border-color: orange;
 }

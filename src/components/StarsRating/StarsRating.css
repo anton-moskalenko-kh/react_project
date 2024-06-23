@@ -1,0 +1,18 @@
+.ratingBlock {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.ratingValue {
+    font-size: 20px;
+}
+
+.dark span {
+    color: white;
+}
+
+
+
+

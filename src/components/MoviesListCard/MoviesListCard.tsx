@@ -14,10 +14,10 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
 
     return (
         <div className={styles.movieCardBlock}>
-            <p>
+            <p className={styles.movieTitle}>
                 <Link to={movie.id.toString()}>{movie.title}</Link>
             </p>
-            <PosterPreview key={movie.id} imgUrl={movie.poster_path}/>
+            <PosterPreview key={movie.id} imgUrl={movie.poster_path} movieId={movie.id.toString()}/>
             <BasicRating value={rating}/>
         </div>
     );

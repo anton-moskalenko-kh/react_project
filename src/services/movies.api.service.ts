@@ -2,7 +2,6 @@ import axios from "axios";
 import {baseUrl, urls} from "../constants/urls";
 import {accessToken} from "../constants/constants";
 import {IMoviesPaginatedModel} from "../models/IMoviesPaginatedModel";
-import {IMoviesModel} from "../models/IMoviesModel";
 import {IMovieInfoModel} from "../models/IMovieInfoModel";
 
 const axiosInstance = axios.create({

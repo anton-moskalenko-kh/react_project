@@ -14,10 +14,10 @@ const GenreBadge: FC<IProps> = ({genre}) => {
 
     return (
         <div className={styles.badgeBtnBlock}>
-            <button onClick={() => {
-                navigate('/movies')
-                setSearchParams({page: '1', with_genres: genre.id.toString()})
-            }}>{genre.name}</button>
+                <button className={styles.badgeBtn} onClick={() => {
+                    navigate('/movies')
+                    setSearchParams({page: '1', with_genres: genre.id.toString()})
+                }}>{genre.name}</button>
         </div>
     );
 };

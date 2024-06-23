@@ -78,6 +78,12 @@ export const moviesSlice = createSlice({
     reducers: {
         changeLoadState: (state, action: PayloadAction<boolean>) => {
             state.isLoaded = action.payload;
+        },
+        clearMovies: (state) => {
+            state.movies = []
+        },
+        clearMovieInfo: (state) => {
+            state.movie = null
         }
     },
     extraReducers: builder => builder
